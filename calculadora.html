@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h1{
+            display: flex;
+            justify-content: center;
+        }
+        .contenedor{
+            display: flex;
+            justify-content: center;
+        }
+        .dividir{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+        .flex_container{
+            display: flex;
+            justify-content: center;
+            margin: 20px;
+        }
+        .derecha{
+            display: flex;
+            justify-content: center;
+            margin: 10px;
+        }
+        .flex{
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    
+        <h1>Calculadora</h1>
+    <div class="contenedor">
+        <div class="dividir">
+        <div class="izquierda">
+            <h1 class="resultado"><input id="pantallita" type="number"></input></h1>
+            <div class="flex_container">
+                <div class="flex">Mc</div>
+                <div class="flex">Mr</div>
+                <div class="flex">M+</div>
+                <div class="flex">M-</div>
+                <div class="flex">Ms</div>  
+            </div>
+            <div class="grid_container">
+                <div class="grid"><button id="1" onclick="escribenumero(this)">1</button></div>
+                <div class="grid"><button id="2" onclick="escribenumero(this)">2</button></div>
+                <div class="grid"><button id="3" onclick="escribenumero(this)">3</button></div>
+                <div class="grid"><button id="4" onclick="escribenumero(this)">4</button></div>
+                <div class="grid"><button id="5" onclick="escribenumero(this)">5</button></div>
+                <div class="grid"><button id="6" onclick="escribenumero(this)">6</button></div>
+                <div class="grid"><button id="7" onclick="escribenumero(this)">7</button></div>
+                <div class="grid"><button id="8" onclick="escribenumero(this)">8</button></div>
+                <div class="grid"><button id="9" onclick="escribenumero(this)">9</button></div>
+                <div class="grid"><button id="mas" onclick="escribeop(this)">+</button></div>
+                <div class="grid"><button id="menos" onclick="escribeop(this)">-</button></div>
+                <div class="grid"><button id="div" onclick="escribeop(this)">/</button></div>
+                <div class="grid" id="multi" onclick="escribeop(this)"><button>*</button></div>
+                <div class="grid" id="igual" onclick="escribeIgual()"><button>=</button></div>
+            </div>
+
+        </div> 
+        <div class="derecha">
+            <div class="historial"><button>Historial</button></div>
+            <div class="memoria"><button>Memoria<button>1</button></button></div>
+        </div>
+        </div>
+    </div>
+    
+</body>
+<script src="/peticiones"></script>
+<script>
+    let calculadorainstacia = new Calculadora();
+    const escribenumero =(input)=>{
+        document.getElementById('pantallita').value += input.id;
+    }
+    const escribeop = (input)=>{
+        console.log(input.id)
+        calculadorainstacia.operando1 = document.getElementById('pantallita').value;
+        calculadorainstacia.tipoOperacion = input.id;
+        document.getElementById('pantallita').value = '';
+    }
+    const escribeIgual = ()=>{
+        calculadorainstacia.operando2 = document.getElementById('pantallita').value;
+        switch(calculadorainstacia.tipoOperacion){
+            case 'mas':
+                {
+                    console.log("Hola")
+                    console.log(calculadorainstacia.Sumar().then(res=>console.log(res)))
+                    calculadorainstacia.Sumar().then((response)=>{                        
+                        console.log(response);
+                        document.getElementById('pantallita').value = response;
+                    },(err)=>{
+                        alert(err)
+                    })
+                    break;
+                }
+                case 'menos':
+                {
+                    calculadorainstacia.restar().then((response)=>{
+                        console.log(response);
+                        document.getElementById('pantallita').value = response;
+                    },(err)=>{
+                        alert(err)
+                    })
+                    break;
+                } 
+                case 'multiplicar':
+                {
+                    calculadorainstacia.Sumar().then((response)=>{
+                        console.log(response);
+                        document.getElementById('pantallita').value = response;
+                    },(err)=>{
+                        alert(err)
+                    })
+                    break;
+                }
+                case 'dividir':
+                {
+                    calculadorainstacia.Sumar().then((response)=>{
+                        console.log(response);
+                        document.getElementById('pantallita').value = response;
+                    },(err)=>{
+                        alert(err)
+                    })
+                    break;
+                }   
+        }
+    }
+
+</script>
+</html>
