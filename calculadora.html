@@ -68,7 +68,7 @@
         </div> 
         <div class="derecha">
             <div class="historial"><button>Historial</button></div>
-            <div class="memoria"><button>Memoria<button>1</button></button></div>
+            <div class="memoria"><button>Memoria<button></div>
         </div>
         </div>
     </div>
@@ -91,8 +91,6 @@
         switch(calculadorainstacia.tipoOperacion){
             case 'mas':
                 {
-                    console.log("Hola")
-                    console.log(calculadorainstacia.Sumar().then(res=>console.log(res)))
                     calculadorainstacia.Sumar().then((response)=>{                        
                         console.log(response);
                         document.getElementById('pantallita').value = response;
@@ -103,7 +101,7 @@
                 }
                 case 'menos':
                 {
-                    calculadorainstacia.restar().then((response)=>{
+                    calculadorainstacia.Restar().then((response)=>{
                         console.log(response);
                         document.getElementById('pantallita').value = response;
                     },(err)=>{
@@ -111,9 +109,9 @@
                     })
                     break;
                 } 
-                case 'multiplicar':
+                case 'multi':
                 {
-                    calculadorainstacia.Sumar().then((response)=>{
+                    calculadorainstacia.Multiplicar().then((response)=>{
                         console.log(response);
                         document.getElementById('pantallita').value = response;
                     },(err)=>{
@@ -121,9 +119,9 @@
                     })
                     break;
                 }
-                case 'dividir':
+                case 'div':
                 {
-                    calculadorainstacia.Sumar().then((response)=>{
+                    calculadorainstacia.Dividir().then((response)=>{
                         console.log(response);
                         document.getElementById('pantallita').value = response;
                     },(err)=>{

@@ -1,3 +1,5 @@
+const { json } = require("body-parser");
+
 module.exports = (app)=>{
     // app.get('/bienvenida',(req,res)=>res.send("<h1>Bienvenido a mi pagina</h1>"))
     // app.get('/despedida',(req,res)=>res.send("<h1>Hasta luego</h1>"))
@@ -26,28 +28,28 @@ module.exports = (app)=>{
     app.get('/peticiones',(req,res)=>{
         res.sendfile("peticiones.js");
     })
-    app.post('/sumar',(req,res)=>{
+    app.post('/suma',(req,res)=>{
         let operando1 = req.body.operando1,
         operando2 = req.body.operando2,
-        resultado = operando1 + operando2;
-        res.send(resultado);
+        resultado = parseInt(operando1) + parseInt(operando2);
+        res.send(JSON.stringify(resultado));
     })
     app.post('/resta',(req,res)=>{
         let operando1 = req.body.operando1,
         operando2 = req.body.operando2,
-        resultado = operando1 + operando2;
-        res.send(resultado);
+        resultado = parseInt(operando1) - parseInt(operando2);
+        res.send(JSON.stringify(resultado));
     })
     app.post('/multiplicacion',(req,res) =>{
         let operando1 = req.body.operando1,
         operando2 = req.body.operando2,
-        resultado = operando1 + operando2;
-        res.send(resultado);
+        resultado = parseInt(operando1) * parseInt(operando2);
+        res.send(JSON.stringify(resultado));
     })
     app.post('/division',(req,res)=>{
         let operando1 = req.body.operando1,
         operando2 = req.body.operando2,
-        resultado = operando1 + operando2;
-        res.send(resultado);
+        resultado = parseInt(operando1) / parseInt(operando2);
+        res.send(JSON.stringify(resultado));
     })
 }

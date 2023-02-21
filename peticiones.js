@@ -18,17 +18,18 @@ Sumar(){
     return new Promise((resolve, reject) => {
         
         try {
+            console.log('sumar')
             let xhr = new XMLHttpRequest();
-            xhr.open('POST','/suma');
+            xhr.open('POST','/suma')
             xhr.setRequestHeader('Content-Type','application/json');
                 xhr.onload = function() {
                     if (xhr.status == 200) {
                         resolve(JSON.parse(xhr.responseText));
                     }else{
                         reject(xhr);
-                    }
-                    xhr.send(JSON.stringify(objectSend));
+                    }         
                 }
+                xhr.send(JSON.stringify(objectSend));
         } catch (error) {
             reject(error.message);
         }
@@ -51,8 +52,8 @@ Restar(){
                     }else{
                         reject(xhr);
                     }
-                    xhr.send(JSON.stringify(objectSend));
                 }
+                xhr.send(JSON.stringify(objectSend));
         } catch (error) {
             reject(error.message);
         }
@@ -75,8 +76,8 @@ Multiplicar(){
                     }else{
                         reject(xhr);
                     }
-                    xhr.send(JSON.stringify(objectSend));
                 }
+                xhr.send(JSON.stringify(objectSend));
         } catch (error) {
             reject(error.message);
         }
@@ -99,8 +100,8 @@ Multiplicar(){
                         }else{
                             reject(xhr);
                         }
-                        xhr.send(JSON.stringify(objectSend));
                     }
+                    xhr.send(JSON.stringify(objectSend));
             } catch (error) {
                 reject(error.message);
             }
