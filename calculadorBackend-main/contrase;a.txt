@@ -1,0 +1,1 @@
+mongodb+srv://Joaquito26:<password>@cluster0.f26ihra.mongodb.net/?retryWrites=true&w=majority
